@@ -28,7 +28,7 @@ namespace api.Repository
         {
             var reservation = await _context.Reservation.FirstOrDefaultAsync(r=>r.Id==id);
             if(reservation==null)return null;
-            if(userId!=reservation.userId) return null;
+            if(userId!=reservation.AppUserId) return null;
             _context.Reservation.Remove(reservation);
             await _context.SaveChangesAsync();
             return reservation;
