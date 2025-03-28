@@ -1,0 +1,70 @@
+/* Styl dla kontenera karty */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 250px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Styl tekstu w karcie */
+  .card .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Styl dla linku (przycisku) */
+  .button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button span {
+    font-weight: 500;
+  }
+  /* Styl dla przycisku */
+.delete-button {
+  background-color: #e74c3c; /* Czerwony kolor tła, dla przycisku usuwania */
+  color: white; /* Kolor tekstu */
+  padding: 10px 20px; /* Wewnętrzne odstępy */
+  border-radius: 5px; /* Zaokrąglone rogi */
+  border: none; /* Brak obramowania */
+  font-size: 16px; /* Rozmiar czcionki */
+  cursor: pointer; /* Zmieniony kursor na 'pointer' przy najechaniu */
+  transition: background-color 0.3s, transform 0.2s; /* Animacja zmiany koloru i efekt przycisku */
+}
+
+/* Styl po najechaniu kursorem */
+.delete-button:hover {
+  background-color: #c0392b; /* Ciemniejszy odcień czerwonego przy najechaniu */
+  transform: scale(1.05); /* Powiększenie przycisku podczas najechania */
+}
+
+/* Styl przycisku w stanie kliknięcia */
+.delete-button:active {
+  transform: scale(0.95); /* Zmniejszenie przycisku, gdy jest kliknięty */
+}
+
+/* Opcjonalnie, styl dla tekstu w przycisku */
+.delete-button span {
+  font-weight: bold; /* Pogrubienie tekstu */
+}
