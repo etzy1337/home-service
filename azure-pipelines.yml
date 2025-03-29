@@ -2,30 +2,27 @@ trigger:
 - main
 
 pool:
-  name: Default  # Używamy domyślnej puli
+  name: Default
   demands:
-    - agent.name -equals AgentSelfHosted  # Jeśli masz lokalnego agenta, użyj tej nazwy
+    - agent.name -equals AgentSelfHosted
 
 variables:
-  solution: 'api/api.sln'  # Zmieniona na pełną ścieżkę do pliku .sln
+  solution: 'api/api.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-# Krok 1: Instalacja narzędzi NuGet i przywracanie zależności
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'  # Przywracamy zależności dla konkretnego rozwiązania
+    restoreSolution: '$(solution)'
 
-# Krok 2: Budowanie rozwiązania .NET
 - script: |
-    dotnet restore $(solution)  # Przywracamy zależności NuGet dla projektu .NET
-    dotnet build $(solution) -c $(buildConfiguration)  # Budujemy rozwiązanie .NET
+    dotnet restore $(solution)
+    dotnet build $(solution) -c $(buildConfiguration)
   displayName: 'Build .NET API'
 
-# Krok 3: Uruchamianie testów jednostkowych (jeśli masz testy w projekcie .NET)
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
