@@ -7,7 +7,7 @@ pool:
     - agent.name -equals AgentSelfHosted  # Dodaj nazwę swojego agenta lokalnego, jeśli masz wiele agentów
 
 variables:
-  solution: '**/*.sln'
+  solution: 'api/api.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
