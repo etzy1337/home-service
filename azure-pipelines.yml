@@ -1,8 +1,3 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - main
 
@@ -28,7 +23,7 @@ steps:
 - script: |
     cd api  # Przechodzimy do folderu "api", w którym znajduje się projekt .NET
     dotnet restore  # Przywracamy zależności NuGet dla projektu .NET
-    dotnet build -c $(buildConfiguration)  # Budujemy projekt .NET
+    dotnet build -c Release  # Budujemy projekt .NET
   displayName: 'Build .NET API'
 
 # Krok 3: Opcjonalnie uruchamianie testów jednostkowych (jeśli masz testy w projekcie .NET)
