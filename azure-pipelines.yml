@@ -9,7 +9,7 @@ trigger:
 pool:
   name: Default  # Jeśli chcesz używać agenta w domyślnej puli
   demands:
-    - agent.name -equals <AgentSelfHosted>  # Dodaj nazwę swojego agenta lokalnego, jeśli masz wiele agentów
+    - agent.name -equals AgentSelfHosted  # Dodaj nazwę swojego agenta lokalnego, jeśli masz wiele agentów
 
 variables:
   solution: '**/*.sln'
