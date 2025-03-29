@@ -15,20 +15,23 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+# Krok 1: Instalacja narzędzi NuGet i przywracanie zależności
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# Krok 2: Przechodzimy do folderu z projektem .NET (np. "api") i budujemy rozwiązanie .NET
+- script: |
+    cd api  # Przechodzimy do folderu "api", w którym znajduje się projekt .NET
+    dotnet restore  # Przywracamy zależności NuGet dla projektu .NET
+    dotnet build -c $(buildConfiguration)  # Budujemy projekt .NET
+  displayName: 'Build .NET API'
 
+# Krok 3: Opcjonalnie uruchamianie testów jednostkowych (jeśli masz testy w projekcie .NET)
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+  displayName: 'Run Tests'
