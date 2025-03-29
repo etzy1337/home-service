@@ -21,7 +21,6 @@ steps:
 
 # Krok 2: Przechodzimy do folderu z projektem .NET (np. "api") i budujemy rozwiązanie .NET
 - script: |
-    cd api  # Przechodzimy do folderu "api", w którym znajduje się projekt .NET
     dotnet restore  # Przywracamy zależności NuGet dla projektu .NET
     dotnet build -c Release  # Budujemy projekt .NET
   displayName: 'Build .NET API'
