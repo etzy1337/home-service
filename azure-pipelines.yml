@@ -40,9 +40,6 @@ steps:
     npm run build
   displayName: 'Build React App'
 
-- script: |
-    rmdir /S /Q api\wwwroot
-    xcopy /E /I /Y front\build api\wwwroot
-  displayName: 'Copy React Build to API wwwroot'
+
 
 
