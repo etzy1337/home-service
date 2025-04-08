@@ -28,3 +28,20 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
   displayName: 'Run Tests'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd front
+    npm install
+    npm run build
+  displayName: 'Build React App'
+
+  - script: |
+    rm -r api/wwwroot/*
+    cp -r frontend/build/* api/wwwroot/
+  displayName: 'Copy React Build to API wwwroot'
+
